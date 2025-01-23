@@ -10,6 +10,11 @@
     <div class="container">
         <div class="card">
             <div class="card-header">Add New User</div>
+            @if (Session::has('fail'))
+                <span class="alert alert-danger p-2">
+                    {{Session::get('fail')}}
+                </span>
+            @endif
             <div class="card-body">
                 <form action="{{route('AddUser')}}" method="post">
                     @csrf

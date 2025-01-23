@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -25,5 +26,21 @@ class UserController extends Controller
             'phone_number' => 'required|integer',
             'password' => 'required|confirmed|min:4|max:12',
         ]);
+        
+        try {
+            //register new User
+            $new_user = new User;
+            $new_user->$name = $request->full_name;
+            $new_user->$email = $request->email;
+            $new_user->$phone_number = $request->phone_number;
+            $new_user->$password = Hash::make($request->password);
+            $new_user->save();
+
+            return redirect('/users')->with('success', 'User Added Successfully');
+        } catch (\Exception $e) {
+            return response('/add/user')->with('fail', $e->getMessage());
+        }
+
+        
     }
 }
