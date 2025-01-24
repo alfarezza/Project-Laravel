@@ -42,6 +42,11 @@ class UserController extends Controller
         }
     }
 
+    public function loadEditForm($id){
+        $user = User::find($id);
+
+        return view('edit-user', compact('user'));
+    }
 
     public function deleteUser($id){
         try {
