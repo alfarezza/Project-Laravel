@@ -18,6 +18,7 @@
             <div class="card-body">
                 <form action="{{route('EditUser')}}" method="post">
                     @csrf
+                    <input type="hidden" name="user_id" id="" value="{{$user->id}}">
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Full Name</label>
                         <input type="text" name="full_name" value="{{$user->name}}" class="form-control" id="formGroupExampleInput" placeholder="Enter Full Name">

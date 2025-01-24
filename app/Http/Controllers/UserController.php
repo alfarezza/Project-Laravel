@@ -48,6 +48,29 @@ class UserController extends Controller
         return view('edit-user', compact('user'));
     }
 
+    public function EditUser(Request $request) {
+        //perform form validation
+        $request->validate([
+            'full_name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'phone_number' => 'required',
+            // 'password' => 'required|confirmed|min:4|max:12',
+        ]);
+        
+        try {
+            //modify User
+            $update_user = User::where('id',$request->user_id)->update([
+                'full_name' => $request->full_name,
+                'email' => $request->email,
+                'phone_number' => $request->phone_number,
+            ]);
+
+            return redirect('/users')->with('success', 'User Updates Successfully');
+        } catch (\Exception $e) {
+            return response('/add/user')->with('fail', $e->getMessage());
+        }
+    }
+
     public function deleteUser($id){
         try {
             User::where('id',$id)->delete();
