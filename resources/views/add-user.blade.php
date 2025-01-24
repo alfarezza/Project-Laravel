@@ -18,6 +18,14 @@
             <div class="card-body">
                 <form action="{{route('AddUser')}}" method="post">
                     @csrf
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" name="first_name" value="{{old('first_name')}}" class="form-control" placeholder="First name" aria-label="First name">
+                        </div>
+                        <div class="col">
+                            <input type="text" name="last_name" value="{{old('last_name')}}" class="form-control" placeholder="Last name" aria-label="Last name">
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Full Name</label>
                         <input type="text" name="full_name" value="{{old('full_name')}}" class="form-control" id="formGroupExampleInput" placeholder="Enter Full Name">

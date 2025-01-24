@@ -27,6 +27,8 @@
                 <table class="table table-sm table-stripped table-bordered">
                     <thead>
                         <th>S/N</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Full Name</th>
                         <th>Email</th>
                         <th>Phone Number</th>
@@ -39,6 +41,8 @@
                             @foreach ($all_users as $item)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
+                                    <td>{{$item->first_name}}</td>
+                                    <td>{{$item->last_name}}</td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->phone_number}}</td>

@@ -21,6 +21,8 @@ class UserController extends Controller
     public function AddUser(Request $request) {
         //perform form validation
         $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'string',
             'full_name' => 'required|string',
             'email' => 'required|email|unique:users',
             'phone_number' => 'required',
@@ -30,6 +32,8 @@ class UserController extends Controller
         try {
             //register new User
             $new_user = new User;
+            $new_user->first_name = $request->first_name;
+            $new_user->last_name = $request->last_name;
             $new_user->name = $request->full_name;
             $new_user->email = $request->email;
             $new_user->phone_number = $request->phone_number;
@@ -51,6 +55,8 @@ class UserController extends Controller
     public function EditUser(Request $request) {
         //perform form validation
         $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'string',
             'full_name' => 'required|string',
             'email' => 'required|email',
             'phone_number' => 'required',
@@ -60,6 +66,8 @@ class UserController extends Controller
         try {
             //modify User
             $update_user = User::where('id',$request->user_id)->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
                 'name' => $request->full_name,
                 'email' => $request->email,
                 'phone_number' => $request->phone_number,

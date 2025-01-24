@@ -19,6 +19,14 @@
                 <form action="{{route('EditUser')}}" method="post">
                     @csrf
                     <input type="hidden" name="user_id" id="" value="{{$user->id}}">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" name="first_name" value="{{$user->first_name}}" class="form-control" placeholder="First name" aria-label="First name">
+                        </div>
+                        <div class="col">
+                            <input type="text" name="last_name" value="{{$user->last_name}}" class="form-control" placeholder="Last name" aria-label="Last name">
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Full Name</label>
                         <input type="text" name="full_name" value="{{$user->name}}" class="form-control" id="formGroupExampleInput" placeholder="Enter Full Name">
@@ -28,7 +36,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Email</label>
-                        <input type="email" name="email" value="{{$user->email}}" class="form-control" id="formGroupExampleInput2" placeholder="Enter Email" disabled>
+                        <input type="email" name="email" value="{{$user->email}}" class="form-control" id="formGroupExampleInput2" placeholder="Enter Email">
                         @error('email')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
