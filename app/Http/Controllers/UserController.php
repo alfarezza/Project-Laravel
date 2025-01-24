@@ -52,7 +52,7 @@ class UserController extends Controller
         //perform form validation
         $request->validate([
             'full_name' => 'required|string',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email',
             'phone_number' => 'required',
             // 'password' => 'required|confirmed|min:4|max:12',
         ]);
@@ -60,14 +60,14 @@ class UserController extends Controller
         try {
             //modify User
             $update_user = User::where('id',$request->user_id)->update([
-                'full_name' => $request->full_name,
+                'name' => $request->full_name,
                 'email' => $request->email,
                 'phone_number' => $request->phone_number,
             ]);
 
-            return redirect('/users')->with('success', 'User Updates Successfully');
+            return redirect('/users')->with('success', 'Updates Successfully');
         } catch (\Exception $e) {
-            return response('/add/user')->with('fail', $e->getMessage());
+            return response('/edit/user')->with('fail', $e->getMessage());
         }
     }
 
