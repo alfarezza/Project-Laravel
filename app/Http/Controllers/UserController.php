@@ -40,15 +40,15 @@ class UserController extends Controller
         } catch (\Exception $e) {
             return response('/add/user')->with('fail', $e->getMessage());
         }
+    }
 
-        public function deleteUser($id){
-            try {
-                User::where('id',$id)->delete();
-                return redirect('/users')->with('success', 'User Deleted Successfully!');
-            } catch (\Exception $e) {
-                return redirect('/users')->with('fail',$e->getMessage());
-            }
+
+    public function deleteUser($id){
+        try {
+            User::where('id',$id)->delete();
+            return redirect('/users')->with('success', 'User Deleted Successfully!');
+        } catch (\Exception $e) {
+            return redirect('/users')->with('fail',$e->getMessage());
         }
-
     }
 }
