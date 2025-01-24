@@ -23,17 +23,17 @@ class UserController extends Controller
         $request->validate([
             'full_name' => 'required|string',
             'email' => 'required|email|unique:users',
-            'phone_number' => 'required|integer',
+            'phone_number' => 'required',
             'password' => 'required|confirmed|min:4|max:12',
         ]);
         
         try {
             //register new User
             $new_user = new User;
-            $new_user->$name = $request->full_name;
-            $new_user->$email = $request->email;
-            $new_user->$phone_number = $request->phone_number;
-            $new_user->$password = Hash::make($request->password);
+            $new_user->name = $request->full_name;
+            $new_user->email = $request->email;
+            $new_user->phone_number = $request->phone_number;
+            $new_user->password = Hash::make($request->password);
             $new_user->save();
 
             return redirect('/users')->with('success', 'User Added Successfully');
