@@ -20,21 +20,21 @@
                     @csrf
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Full Name</label>
-                        <input type="text" name="full_name" class="form-control" id="formGroupExampleInput" placeholder="Enter Full Name">
+                        <input type="text" name="full_name" value="{{old('full_name')}}" class="form-control" id="formGroupExampleInput" placeholder="Enter Full Name">
                         @error('full_name')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" id="formGroupExampleInput2" placeholder="Enter Email">
+                        <input type="email" name="email" value="{{old('email')}}" class="form-control" id="formGroupExampleInput2" placeholder="Enter Email">
                         @error('email')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput3" class="form-label">Phone Number</label>
-                        <input type="text" name="phone_number" class="form-control" id="formGroupExampleInput3" placeholder="Enter Phone Number">
+                        <input type="number" name="phone_number" value="{{old('phone_number')}}" class="form-control" id="formGroupExampleInput3" placeholder="Enter Phone Number">
                         @error('phone_number')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
