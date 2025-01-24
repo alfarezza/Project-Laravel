@@ -9,4 +9,7 @@ Route::get('/', function () {
 
 Route::get('/users',[UserController::class, 'loadAllUser']);
 Route::get('/add/user',[UserController::class, 'loadAllUserForm']);
+Route::get('/edit/{id}',[UserController::class, 'loadEditForm']);
+Route::get('/delete/{id}',[UserController::class, 'deleteUser']);
+
 Route::post('/add/user',[UserController::class, 'AddUser'])->name('AddUser');
