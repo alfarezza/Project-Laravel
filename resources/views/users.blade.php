@@ -33,11 +33,11 @@
                             @foreach ($all_users as $item)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$loop->name}}</td>
-                                    <td>{{$loop->email}}</td>
-                                    <td>{{$loop->phone_number}}</td>
-                                    <td>{{$loop->created_at}}</td>
-                                    <td>{{$loop->updated_at}}</td>
+                                    <td>{{$item->name}}</td>
+                                    <td>{{$item->email}}</td>
+                                    <td>{{$item->phone_number}}</td>
+                                    <td>{{$item->created_at}}</td>
+                                    <td>{{$item->updated_at}}</td>
                                 </tr>
                             @endforeach
                         @else
